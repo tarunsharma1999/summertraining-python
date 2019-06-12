@@ -1,12 +1,13 @@
 import subprocess
 command_input=input("Enter command:")
+attribute_input=input("Enter attribute:")
+command=[command_input,attribute_input]
 
-command=[command_input]
+f=open('clog.txt','a')
+f.write(command_input+attribute_input)
+f.close()
 
 process= subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 output,error=process.communicate()
 o=output.decode('ascii')
 print(o)
-f=open('clog.txt','w')
-f.write(command_input)
-f.close()
